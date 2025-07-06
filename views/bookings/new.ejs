@@ -1,0 +1,48 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+  <div class="row mt-3">
+    <div class="col-8 offset-2">
+      <h3>Book <%= listing.title %></h3>
+      <form
+        action="/listing/<%= listing._id %>/book"
+        method="post"
+        class="needs-validation"
+        novalidate>
+        <div class="mb-3">
+          <label for="checkIn" class="form-label">Check-In Date</label>
+          <input
+            type="date"
+            class="form-control"
+            id="checkIn"
+            name="booking[checkIn]"
+            required />
+          <div class="invalid-feedback">Please provide a check-in date.</div>
+        </div>
+        <div class="mb-3">
+          <label for="checkOut" class="form-label">Check-Out Date</label>
+          <input
+            type="date"
+            class="form-control"
+            id="checkOut"
+            name="booking[checkOut]"
+            required />
+          <div class="invalid-feedback">Please provide a check-out date.</div>
+        </div>
+        <div class="mb-3">
+          <label for="guests" class="form-label">Number of Guests</label>
+          <input
+            type="number"
+            class="form-control"
+            id="guests"
+            name="booking[guests]"
+            min="1"
+            required />
+          <div class="invalid-feedback">
+            Please provide the number of guests.
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Book Now</button>
+      </form>
+    </div>
+  </div>
+</body>

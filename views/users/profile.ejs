@@ -1,0 +1,49 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h2 class="card-title">Profile Information</h2>
+          </div>
+          <div class="card-body">
+            <p><strong>Username:</strong> <%= user.username %></p>
+            <p><strong>Email:</strong> <%= user.email %></p>
+          </div>
+        </div>
+        <div class="card mt-4">
+          <div class="card-header bg-secondary text-white">
+            <h3 class="card-title">Booking History</h3>
+          </div>
+          <div class="card-body">
+            <% if (bookings.length > 0) { %> <% bookings.forEach(booking => { %>
+            <div class="booking mb-3 p-3 border rounded">
+              <p class="mb-1">
+                <strong>Listing:</strong> <%= booking.listing.title %>
+              </p>
+              <p class="mb-1">
+                <strong>Check-in:</strong> <%= booking.checkIn.toDateString() %>
+              </p>
+              <p class="mb-1">
+                <strong>Check-out:</strong> <%= booking.checkOut.toDateString()
+                %>
+              </p>
+              <p class="mb-1"><strong>Guests:</strong> <%= booking.guests %></p>
+              <p class="mb-1">
+                <strong>Booked on:</strong> <%= booking.createdAt ?
+                booking.createdAt.toDateString() : "N/A" %>
+              </p>
+              <form class="mb-3" method="post" ?_method="Delete">
+               <button class="btn btn-danger ">Cancel Booking</button></form>
+                </div>
+            </div>
+            <% }) %> <% } else { %>
+            <p>No booking history found.</p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
